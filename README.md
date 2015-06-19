@@ -49,6 +49,11 @@ una vez dentro de la carpeta escribir:
     git add <nombre del archivo>
  
 Una vez que se hayan seleccionado todos los archivos que se vayan a actualizar escribir:
+
+
+
     git commit -m https://<nombre usuario>@bitbucket.org/gustavogelf/chequeate.git
+
+    
 
 nota: La bandera -m indica que se debe consolidar el archivo con un mensaje informativo.
