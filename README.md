@@ -5,7 +5,7 @@ Chequeate sera una web al propio estilo de una guía de paginas amarilla,  tendr
 
 
 
--Para lo siguiente se entiende que deben tener instalado en sus maquinas  GIT.-
+-Para lo siguiente  deben tener instalado en sus maquinas  GIT.-
 ----------
 
 
@@ -19,13 +19,14 @@ Chequeate sera una web al propio estilo de una guía de paginas amarilla,  tendr
     cd ../  (Para bajar un nivel)
     cd<Nombre carpeta> (Para entrar a una carpeta)
     Mkdir<nombre carpeta> (Para crear una carpeta en caso de no tenerla)
+
 Entrar a la carpeta:
 
     cd chequeate
 
 una vez dentro de la carpeta escribir:
 
-    git clone git clone https://<nombre en bi butcket>@bitbucket.org/gustavogelf/chequeate.git
+    git clone https://<nombre en bi butcket>@bitbucket.org/gustavogelf/chequeate.git
  
  Luego les pedira su clave de bitbucket, la colocan y comenzara la descarga.
 
@@ -45,6 +46,9 @@ Entrar a la carpeta:
 
 una vez dentro de la carpeta escribir:
 
-    git clone git clone https://<nombre en bi butcket>@bitbucket.org/gustavogelf/chequeate.git
+    git add <nombre del archivo>
  
- Luego les pedira su clave de bitbucket, la colocan y comenzara la descarga.
+Una vez que se hayan seleccionado todos los archivos que se vayan a actualizar escribir:
+    git commit -m https://<nombre usuario>@bitbucket.org/gustavogelf/chequeate.git
+
+nota: La bandera -m indica que se debe consolidar el archivo con un mensaje informativo.
