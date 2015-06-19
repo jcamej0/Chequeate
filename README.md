@@ -57,3 +57,4 @@ Una vez que se hayan seleccionado todos los archivos que se vayan a actualizar e
     
 
 nota: La bandera -m indica que se debe consolidar el archivo con un mensaje informativo.
+nota2: Ignorar el archivo config, no lo suban.
