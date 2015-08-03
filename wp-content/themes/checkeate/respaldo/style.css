@@ -1,0 +1,193 @@
+/* 
+Theme name: chekealo
+Theme url:www.*.com
+descripcion:tema custom para un directorio
+version:1
+author:humberto gonzalez
+author URL:none
+*/
+
+/* estilos generales */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: #67787F;
+	font-size:12pt;
+	font-family: "open sans", Arial,Helvetica,sans-serif; 
+}
+
+header, #main, footer {
+	width:85%;
+	max-width:960px; 
+	margin:0px auto;
+	background: #406C7F; 
+}
+
+a {
+	color:#67ADCC;
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/*----------------header----------------*/
+
+ header {
+
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
+ 	overflow:hidden;
+ 	width: 85%; 
+ }
+
+ header #logo {
+ 	width:40%;
+ 	float:left; 
+ }
+
+ header #logo p {
+   font-family:'Roboto', Helvetica, Arial, sans-serif;
+   font-size: 4rem;
+   font-weight:100;
+   text-align:left;
+   color:#CDF0FF; 
+ }
+
+header #logo span{
+	text-align:center;
+	width:100%;
+	display:block;
+	position:relative;
+	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-weight:400;
+	right: 20px;
+	margin-bottom:10px;
+	color:#CDF0FF;
+}
+
+header nav{
+	width:60%;
+	float:right;
+	padding: 10px 0px;
+	margin-top: 30px;
+}
+
+header nav ul{
+	float:right;
+}
+
+header nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 10px;
+
+}
+
+header nav ul li a{
+
+	font-family:'Roboto', Helvetica, Arial, sans-serif;
+	font-weight:300;
+	font-size:1.3rem;
+	color:#CDF0FF; 
+}
+
+header nav ul li a:hover {
+
+	color:#FCFFF7;
+
+}
+
+/*---------main----------*/
+
+#main{
+	overflow:hidden;
+}
+
+/*     slideshow        */
+
+#main #slideshow{
+
+	width:100%;
+	float:left;
+	overflow:hidden;
+	margin-bottom:20px;
+}
+
+#main #slideshow .thumb{
+
+	width:49%;
+	float:left;
+	margin-right:2%;
+}
+
+#main #slideshow article{
+
+	float:left;
+	font-family:'open sans', Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	text-align: justify;
+	width: 49%;
+	color:#ffffff;
+}
+
+#main #slideshow article h2{
+
+	font-family:'Roboto', Helvetica, Arial, sans-serif;
+	font-size:2rem;
+	font-weight:300;
+	text-align:left;
+
+}
+
+#main #slideshow article .date{
+
+	font-family:'Roboto', Helvetica, Arial, sans-serif;
+	font-size:.8rem;
+	font-weight:500;
+	margin-bottom: 10px;
+	color:#FCFFF7;
+}
+
+#main #slideshow .slidesjs-pagination li{
+
+	background:#fff;
+	width:20px;
+	height:20px;
+	margin-right: 10px;
+	display: inline-block;
+}
+
+#main #slideshow .slidesjs-pagination a{
+
+	width:20px;
+	height:20px;
+	display:block;
+	font-size: 0px;
+}
+
+#main #slideshow .slidesjs-pagination li .active{
+
+	background: #333333;
+}
+
+/*-----------main------------*/
+
+#main #articles_list{
+
+	clear:both;
+	width: 75%;
+	float:left;
+}
+
+#main #articles_list article{
+	margin-bottom: 40px;
+	margin-right: 4%;
+	padding-bottom: 40px;
+}

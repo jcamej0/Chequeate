@@ -1,0 +1,55 @@
+.pagesecciones{
+	background: white;
+	width: 88%;
+	margin: 3px auto;
+	height: 900px;
+	border-radius: 10px;
+	border-right: 1px solid rgba(0,0,0,.5);
+	border-left: 1px solid rgba(0,0,0,.5);
+	overflow: hidden;
+}
+
+.header{
+	font-size: 28px;
+	border-bottom: 1px solid black;
+	
+}
+
+.categorias{
+	
+float: left;
+background: silver;
+height: inherit;
+width: 20%;
+border-right: 1px solid black;
+}
+
+
+.publicaciones{
+
+font-size: 16px;
+border-bottom: 1px solid black;
+}
+
+
+.imagen{	
+display: inline-block;
+}
+
+
+.telefono{
+	
+	display: inline-block;
+	position: relative;
+}
+
+
+.resumen{
+	display: inline-block;
+	max-width: 60%;
+	position: relative;
+	bottom: 80px;
+}
+
+
+
