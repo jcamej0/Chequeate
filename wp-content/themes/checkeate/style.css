@@ -168,6 +168,25 @@ body > header > form{
     background: white;
 }
 
+body > section > div.parallax{
+  height: 600px;
+  text-align: center;
+  margin: 0;
+  font-size: 160px;
+  line-height: 600px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body > section > div.parallax.imagen-parallax{
+
+    background-image: url("imagenes/parallax.png");
+
+}
+
+
 .seccion {
     text-align: center;
     float: left;

@@ -28,6 +28,8 @@
     </div>-->
     <section class="secciones">
 
+          <div class="parallax  imagen-parallax">  <h2> Categorias</h2>  </div>
+
 <?php $pages = get_pages($args);
 
 foreach($pages as $page){
@@ -35,11 +37,12 @@ foreach($pages as $page){
 
 
 	<div class="seccion ">
+
 			 <h2> <?php echo $page->post_title ?> </h2>
 
 <a href="<?php echo get_page_link($page->ID); ?>">VISITAR             </a>
 	</div>
-	
+
 
 
 		<?php   } ?>
