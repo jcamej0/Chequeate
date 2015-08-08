@@ -27,7 +27,12 @@ h2 {
 
 
 body {
-    background: rgba(205, 205, 205, 0.4);
+    background: white;
+    border-top:30px solid #FCC39A;
+    border-right:30px solid #FCC39A;
+    border-left: 30px solid #FCC39A;
+
+
 
 }
 
@@ -157,26 +162,26 @@ body > header > form{
 }
 
 .secciones {
-    width: 80%;
-    margin: auto auto 25px auto;
-    border: 1px solid black;
+    width: 100%;
+    margin: 5% auto 25px auto;
     overflow: auto;
     background: white;
-    border-radius: 8px;
-    box-shadow: -0px -2px 8px 0px black inset;
 }
 
 .seccion {
     text-align: center;
     float: left;
-    width: 30%;
+    width: 20%;
     height: 180px;
     margin: 10px;
     border-radius: 4px;
     box-shadow: 1px 1px 8px 1px black inset, -3px 2px 8px 1px rgba(0, 0, 0, 0.5);
+    margin-right: 2%;
+    margin-left: 2%;
     /*transition: border .25s ease-in-out;
     -webkit-transition: border.25s ease-in-out;*/
 }
+
 
 .seccion h2 {
     color: black;
@@ -238,11 +243,6 @@ body > header > form{
     border: 2px solid navy;
     width: 20%;
     height: 180px;
-}
-
-.restaurant {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 }
 
 
@@ -353,4 +353,104 @@ text-decoration:underline;
 
 #menu:hover li:hover ul{
 display:block;
+}
+
+/*************************************************************/
+
+
+body > div.cuerpo
+
+.cuerpo {
+	width:100%;
+  max-height: 400px;
+}
+
+.slides {
+	width:100%;
+  margin-top: 5%;
+}
+
+.slides img {
+	width:100%;
+  padding-left: 2%;
+  padding-right: 2%;
+  max-height: 500px;
+  min-height: 500px;
+}
+
+body > div.cuerpo > div > div > div > div > h2{
+margin-left: 2%;
+
+}
+body > div.cuerpo > div > div > div > div > h3{
+margin-left: 2%;
+margin-bottom: 10px;
+
+}
+
+body > div.cuerpo > div > div > div > div > p{
+  margin-top: 3%;
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: justify;
+  font-family: sans-serif;
+
+}
+.slidesjs-pagination {
+  float: top;
+  background: white;
+	list-style:none;
+	overflow:hidden;
+}
+
+.slidesjs-pagination li {
+	float:left;
+  margin-right: 0px;
+  margin: 0px;
+}
+
+.slidesjs-pagination li a {
+	display:block;
+	padding:10px 50px;
+	color:#fff;
+	text-decoration:none;
+  font-size: 0px;
+  margin-right: 0px;
+}
+
+.slidesjs-pagination li a:hover {
+	background:#000;
+}
+
+.slides .active {
+	background:#000;
+}
+
+
+.slidesjs-navigation{
+	background:#000;
+	color:#fff;
+	text-decoration:none;
+	display:inline-block;
+  padding:10px 50px;
+	float:right;
+  font-size: 16px;
+  margin-right: 0px;
+}
+
+body > div.Promociones {
+
+  margin-top: 5%;
+  border-top: 1px solid;
+  margin-bottom: 5%;
+  padding-left: 20px;
+
+}
+
+.Promociones h2{
+  margin-top: 2%;
+}
+.Promociones p {
+  margin-top: 5px;
+  font-style: italic;
 }
