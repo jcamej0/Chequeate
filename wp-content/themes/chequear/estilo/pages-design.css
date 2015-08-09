@@ -62,8 +62,6 @@ cursor: default;
 font-size: 16px;
 display: inline-block;
 position: relative;
-margin-right: auto;
-margin-left: auto;
 width: 100%;
 }
 
@@ -71,11 +69,11 @@ width: 100%;
 	text-transform: uppercase;
 	margin-top: 10px;
 	width: 100%;
-  text-align: center;
-  padding-right: 5%;
+    text-align: center;
+    padding-right: 5%;
 	opacity: 0;
-  -webkit-transform: translateY(-100px);
-  -webkit-transition: all 0.2s ease-in-out;
+   -webkit-transform: translateY(-100px);
+    -webkit-transition: all 0.2s ease-in-out;
   overflow: hidden;
   background: #FA8029;
 }
