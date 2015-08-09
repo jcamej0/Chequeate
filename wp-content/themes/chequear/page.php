@@ -47,6 +47,7 @@ $args = array('post_type' => $page_title);
  $publicaciones = new WP_Query( $args );
 while($publicaciones->have_posts()) : $publicaciones->the_post();?>
 
+
 <div id="contenedor">
 <div class="publicaciones">
 
@@ -58,9 +59,30 @@ while($publicaciones->have_posts()) : $publicaciones->the_post();?>
 	    	<a href="<?php the_permalink(); ?>"><h5><?php the_title();?></h5></a>
 			
 	     </div>
-	    <div class="resumen">
-				<p><?php the_excerpt() ?></p>
-	   </div>
+	  	
+	  	<div class="rif">
+
+	  	Rif:<?php the_field('rif') ?>
+	  		
+	  	</div>
+
+	  	<div class="direccion">
+	  	Direccion:<?php the_field('direccion') ?>
+	  	</div>
+
+	  	<div class="telefono">
+
+	  	Telefonos:<?php the_field('telefono') ?>
+	  		
+	  	</div>
+
+
+	  	<div class="gps">
+	  	Coordenadas de GPS:<?php the_field('coordenadas') ?>
+	  		
+	  	</div>
+
+
     </div>
 </div>
 </div>

@@ -3,27 +3,45 @@
 
 
 
-	 <div class="search">
+	 <div class="contenedor">
 
-      <section class="secciones">
+      <div class="secciones">
 
-<?php $pages = get_pages($args);
+<?php 
+$args = array(
+'child_of' => 67,
+'sort_column' => 'menu_order'
+
+    );
+
+$pages = get_pages($args);
 
 foreach($pages as $page){
+
     ?>
 
         <div class="seccion restaurant">
-             <h2> <?php echo $page->post_title ?> </h2>
+
+
+            <?php echo get_the_post_thumbnail($page->ID); ?>
+             <h1> <?php echo $page->post_title ?> </h1>
 
             <a href="<?php echo get_page_link($page->ID); ?>">VISITAR             </a>
+
+
         </div>
 
         <?php   } ?>
-    </section>
 
 
-    <div class="mascomentados">
-        Mas comentados
+    </div>
+
+
+    <div class="destacados">
+        <h1>Destacados</h1>
+
+        <?php if (function_exists('wp_corenavi')) wp_corenavi(); ?>
+
     </div>
     <section class="masvisitados">
     </section>

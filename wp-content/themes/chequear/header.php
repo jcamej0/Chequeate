@@ -21,7 +21,7 @@
 
 
 
-      <div class="menu2">
+      <!--<div class="menu2">
       <p>Comparte en tus red social</p>
             <img src="<?php bloginfo('template_url')?>/imagenes/facebook.png" height="40" width="40" alt="">
             <img src="<?php bloginfo('template_url')?>/imagenes/twitter.png" height="40" width="40" alt="">

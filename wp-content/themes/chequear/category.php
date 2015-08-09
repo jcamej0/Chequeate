@@ -2,7 +2,7 @@
 
   <?php
 if( is_category() ) {
-  $q_cat = get_query_var('cat');
+  echo $q_cat = get_query_var('cat');
   $cate = get_category( $q_cat );
   $id_categoria = $cate->category_parent;
 }?>
@@ -10,7 +10,7 @@ if( is_category() ) {
 
 <div  class="pagesecciones">
 	<div class="header">
-		<h2><?php echo single_cat_title("", false);; ?></h2>
+		<h2><?php echo single_cat_title(get_cat_name($id_categoria ) ." / ", false); ?></h2>
       </div>
 	
 	
