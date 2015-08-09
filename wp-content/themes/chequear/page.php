@@ -11,7 +11,7 @@
 <?php 
   $i = get_category_by_slug ($page_title); 
   $s = $i->term_id;
-
+if($s){
     $args = array(
 	'show_option_all'    => '',
 	'orderby'            => 'name',
@@ -38,7 +38,12 @@
 	'taxonomy'           => 'category',
 	'walker'             => null
     );
+	
     wp_list_categories( $args ); 
+	}else{
+
+		echo "No se poseen categorias";
+	}
 ?>
 </aside>
 <?php
@@ -56,29 +61,31 @@ while($publicaciones->have_posts()) : $publicaciones->the_post();?>
 	</div>
 	   <div class="informacion">
      	<div class="nombre">
-	    	<a href="<?php the_permalink(); ?>"><h5><?php the_title();?></h5></a>
+	    	<a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
 			
 	     </div>
 	  	
 	  	<div class="rif">
 
-	  	Rif:<?php the_field('rif') ?>
+	  	Rif: <?php the_field('rif') ?>
 	  		
 	  	</div>
 
 	  	<div class="direccion">
-	  	Direccion:<?php the_field('direccion') ?>
+	  	Direccion: <?php the_field('direccion') ?>
 	  	</div>
 
 	  	<div class="telefono">
 
-	  	Telefonos:<?php the_field('telefono') ?>
+	  	Telefonos: <?php the_field('telefono') ?>
 	  		
 	  	</div>
 
 
 	  	<div class="gps">
-	  	Coordenadas de GPS:<?php the_field('coordenadas') ?>
+	  	Coordenadas de GPS:
+	  	<br>
+	  	<?php the_field('coordenadas') ?>
 	  		
 	  	</div>
 

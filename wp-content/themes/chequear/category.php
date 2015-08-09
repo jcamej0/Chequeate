@@ -65,11 +65,35 @@ while($loop->have_posts()) : $loop->the_post();?>
 	</div>
 	   <div class="informacion">
      	<div class="nombre">
-	    	<h5><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h5>
+	    	<a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
+			
 	     </div>
-	    <div class="resumen">
-				<p><?php the_excerpt() ?></p>
-	   </div>
+	  	
+	  	<div class="rif">
+
+	  	Rif: <?php the_field('rif') ?>
+	  		
+	  	</div>
+
+	  	<div class="direccion">
+	  	Direccion: <?php the_field('direccion') ?>
+	  	</div>
+
+	  	<div class="telefono">
+
+	  	Telefonos: <?php the_field('telefono') ?>
+	  		
+	  	</div>
+
+
+	  	<div class="gps">
+	  	Coordenadas de GPS:
+	  	<br>
+	  	<?php the_field('coordenadas') ?>
+	  		
+	  	</div>
+
+
     </div>
 </div>
 </div>
