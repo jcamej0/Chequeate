@@ -39,18 +39,25 @@
 
    <div class="divisor">
    	
-   	<span>copyrigth Chequeate</span>
+   	<span>copyrigth &copy; Chequeate</span>
    </div>
 
     <div class="divisor">
-    	
+    	<img src="<?php bloginfo('template_directory');?>/imagenes/Iconos/telefono.png" height="20" width="20" alt="">
     	<span>Contactanos: +5812316654</span>
     </div>
 
      <div class="divisor">
-     	
+     	<img src="<?php bloginfo('template_directory');?>/imagenes/Iconos/ubicacion.png" height="20" width="20" alt="">
      	<span>Direccion: Av.Chequeate</span>
      </div>
+
+     <div class="divisor">
+    <img src="<?php bloginfo('template_directory');?>/imagenes/Iconos/flecha.png" height="40" width="40" alt="">
+
+     </div>
+
+
 
    </div>
 
