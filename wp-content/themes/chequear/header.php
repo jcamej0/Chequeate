@@ -8,7 +8,13 @@
   <title><?php wp_title(); ?></title>
   <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url')?>">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/estilo/pages-design.css" type="text/css" media="screen" />
-	<?php wp_head(); ?>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <script type="text/javascript" src="<?php bloginfo('template_directory');?>/miscript.js"> </script>
+<script type="text/javascript">
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+</script>
+  <?php wp_head(); ?>
 </head>
 
 <body>

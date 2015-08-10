@@ -3,12 +3,18 @@
 
 <div  class="pagesecciones">
 	<div class="header">
-		<h2><?php echo $page_title = $wp_query->post->post_title;?></h2>
+		<h2><?php echo  $page_title = $wp_query->post->post_title;?></h2>
     </div>
-
+<script>
+var pagina_seccion = <?php echo json_encode($page_title)?>;
+cargar_publicaciones();
+</script>
 
 <aside class="categorias">
+
+<h1>Categorias</h1>
 <?php 
+
   $i = get_category_by_slug ($page_title); 
   $s = $i->term_id;
 if($s){
@@ -38,63 +44,28 @@ if($s){
 	'taxonomy'           => 'category',
 	'walker'             => null
     );
-	
-    wp_list_categories( $args ); 
+
 	}else{
 
 		echo "No se poseen categorias";
 	}
 ?>
-</aside>
-<?php
-$args = array('post_type' => $page_title);
-
- $publicaciones = new WP_Query( $args );
-while($publicaciones->have_posts()) : $publicaciones->the_post();?>
-
-
-<div id="contenedor">
-<div class="publicaciones">
-
-	<div class="imagen">
-	<?php the_post_thumbnail('thumbnail'); ?>
-	</div>
-	   <div class="informacion">
-     	<div class="nombre">
-	    	<a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
-			
-	     </div>
-	  	
-	  	<div class="rif">
-
-	  	Rif: <?php the_field('rif') ?>
-	  		
-	  	</div>
-
-	  	<div class="direccion">
-	  	Direccion: <?php the_field('direccion') ?>
-	  	</div>
-
-	  	<div class="telefono">
-
-	  	Telefonos: <?php the_field('telefono') ?>
-	  		
-	  	</div>
-
-
-	  	<div class="gps">
-	  	Coordenadas de GPS:
-	  	<br>
-	  	<?php the_field('coordenadas') ?>
-	  		
-	  	</div>
-
-
+<div class="categorias-opciones">
+   <?php wp_list_categories( $args ); ?>
     </div>
+
+<h1>Estados</h1>
+<div class="estados-opciones">
+	<?php tags_filter();?>
+</div>	
+
+</aside>
+
+
+<div class="tagged-posts">
+	
 </div>
-</div>
-<?php endwhile; ?>
-<?php if(function_exists('wp_paginator')) { wp_paginator();}?>
+
 </div>
 
 

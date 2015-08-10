@@ -11,6 +11,8 @@ if( is_category() ) {
 <div  class="pagesecciones">
 	<div class="header">
 		<h2><?php echo single_cat_title(get_cat_name($id_categoria ) ." / ", false); ?></h2>
+    
+
       </div>
 	
 	
@@ -20,6 +22,7 @@ if( is_category() ) {
 <?php 
  single_cat_title("", false);
   $d = get_query_var('cat'); 
+
 
     $args = array(
 	'show_option_all'    => '',
@@ -49,56 +52,21 @@ if( is_category() ) {
     );
     wp_list_categories( $args ); 
 ?>
+<h2><?php $d ?></h2>
+
+<?php tags_filter2();?>
 </aside>
-
-<?php 
-
-$args = array ('post_type' => get_cat_name($id_categoria), 'cat' => $d);
-$loop = new WP_Query ($args);
-while($loop->have_posts()) : $loop->the_post();?>
-
-<div id="contenedor">
-<div class="publicaciones">
-
-	<div class="imagen">
-	<?php the_post_thumbnail('thumbnail'); ?>
-	</div>
-	   <div class="informacion">
-     	<div class="nombre">
-	    	<a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
-			
-	     </div>
-	  	
-	  	<div class="rif">
-
-	  	Rif: <?php the_field('rif') ?>
-	  		
-	  	</div>
-
-	  	<div class="direccion">
-	  	Direccion: <?php the_field('direccion') ?>
-	  	</div>
-
-	  	<div class="telefono">
-
-	  	Telefonos: <?php the_field('telefono') ?>
-	  		
-	  	</div>
+<script>
+var pagina_seccion = <?php echo json_encode('restaurantes')?>;
+var pagina_cat = <?php echo json_encode($d)?>;
+</script>
 
 
-	  	<div class="gps">
-	  	Coordenadas de GPS:
-	  	<br>
-	  	<?php the_field('coordenadas') ?>
-	  		
-	  	</div>
-
-
-    </div>
-</div>
+<div class="tagged-posts">
+	
 </div>
 
-	<?php endwhile; ?>
+	 
 	
 </div>
 

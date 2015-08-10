@@ -44,22 +44,150 @@ function wp_corenavi() {
 }
 ?>
 
+<?php 
+
+function tags_filter() {
+    $tax = 'estado';
+    $terms = get_terms( $tax );
+    $count = count( $terms );
+ 
+    if ( $count > 0 ): ?>
+        <div class="post-tags">
+        <?php
+        foreach ( $terms as $term ) {
+            $term_link = get_term_link( $term, $tax );
+            echo '<a href="' . $term_link . '" class="tax-filter" title="' . $term->slug . '">' . $term->name . '</a>  <br>';
+        } ?>
+        </div>
+    <?php endif;
+}
+
+ ?>
+
+<?php 
+
+function tags_filter2() {
+    $tax = 'estado';
+    $terms = get_terms( $tax );
+    $count = count( $terms );
+ 
+    if ( $count > 0 ): ?>
+        <div class="post-tags">
+        <?php
+        foreach ( $terms as $term ) {
+            $term_link = get_term_link( $term, $tax );
+            echo '<a href="' . $term_link . '" class="tax2-filter" title="' . $term->slug . '">' . $term->name . '</a> ';
+        } ?>
+        </div>
+    <?php endif;
+}
+
+ ?>
+
+
+<?php 
+
+function ajax_filter_posts_scripts() {
+  // Enqueue script
+  wp_register_script('afp_script', get_template_directory_uri() . '/js/ajax-filter-posts.js', false, null, false);
+  wp_enqueue_script('afp_script');
+ 
+  wp_localize_script( 'afp_script', 'afp_vars', array(
+        'afp_nonce' => wp_create_nonce( 'afp_nonce' ), // Create nonce which we later will use to verify AJAX request
+        'afp_ajax_url' => admin_url( 'admin-ajax.php' ),
+      )
+  );
+}
+add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
 
 
 
+ 
+
+ ?>
+
+ <?php function ajax_filter_get_posts($taxonomy ) {
+ 
+  // Verify nonce
+  if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
+    die('Permission denied');
+ 
+  $taxonomy = $_POST['taxonomy'];
+  $estado = $_POST['estado'];
+  $categoria  = $_POST['categoria'];
 
 
+  // WP Query
+  $args = array(
+    'estado' => $taxonomy,
+    'post_type' => $estado,
+    'cat' => $categoria,
+    'posts_per_page' => 10,
+  );
 
 
+  // If taxonomy is not set, remove key from array and get all posts
+  if( !$taxonomy ) {
+    unset( $args['tag'] );
+  }
+ 
+  $query = new WP_Query( $args );
+ 
+  if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+
+<div id="contenedor">
+    <div class="publicaciones">
+
+  <div class="imagen">
+  <?php the_post_thumbnail('thumbnail'); ?>
+  </div>
+     <div class="informacion">
+      <div class="nombre">
+        <a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
+      
+       </div>
+      
+      <div class="rif">
+
+      Rif: <?php the_field('rif') ?>
+        
+      </div>
+
+      <div class="direccion">
+      Direccion: <?php the_field('direccion') ?>
+      </div>
+
+      <div class="telefono">
+
+      Telefonos: <?php the_field('telefono') ?>
+        
+      </div>
 
 
+      <div class="gps">
+      Coordenadas de GPS:
+      <br>
+      <?php the_field('coordenadas') ?>
+        
+      </div>
 
 
+    </div>
+</div>
+</div>
+</div>
+ 
+  <?php endwhile; ?>
+  <?php else: ?>
+    <h2>No hay resultados :C</h2>
+  <?php endif;
+ 
+  die();
+}
+ 
+add_action('wp_ajax_filter_posts', 'ajax_filter_get_posts');
+add_action('wp_ajax_nopriv_filter_posts', 'ajax_filter_get_posts');
 
 
-
-
-
-
-
+ ?>
