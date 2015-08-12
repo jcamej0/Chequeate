@@ -6,9 +6,9 @@
      <div><h1>Siguenos</h1></div>
      <hr>
 
-     <img src="imagenes/facebook.png" height="60" width="60" alt="">
-     <img src="imagenes/twitter.png" height="60" width="60" alt="">
-     <img src="imagenes/youtube.png" height="60" width="60" alt="">
+     <img src="<?php bloginfo('template_directory');?>/imagenes/iconos/facebook.png" height="50" width="50" alt="">
+     <img src="<?php bloginfo('template_directory');?>/imagenes/iconos/twitter.png" height="50" width="50" alt="">
+     <img src="<?php bloginfo('template_directory');?>/imagenes/iconos/whatsapp.png" height="60" width="60" alt="">
      	
      </div>
 

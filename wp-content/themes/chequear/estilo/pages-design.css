@@ -95,6 +95,8 @@ margin-right: 2%;
 margin-left: 2%;
 -webkit-transition: margin 0.5s ease-out;
 overflow: hidden;
+border: 1px solid rgba(10,10,10,.5);
+box-shadow: 1px 1px 15px 1px rgba(0,0,0,.5)
 }
 
 
@@ -179,3 +181,19 @@ color: rgba(50,50,50,1);
 }
 
 
+
+/************************* NAVEGADOR *******************************/
+
+
+#more_posts{
+
+	float: right;
+	position: absolute;
+	left: 93%;
+}
+
+#less{
+
+	float: left;
+	position: absolute;
+}

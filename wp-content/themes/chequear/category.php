@@ -2,7 +2,7 @@
 
   <?php
 if( is_category() ) {
-  echo $q_cat = get_query_var('cat');
+   $q_cat = get_query_var('cat');
   $cate = get_category( $q_cat );
   $id_categoria = $cate->category_parent;
 }?>
@@ -19,6 +19,7 @@ if( is_category() ) {
 	
 	
 <aside class="categorias">
+<h1>Categorias</h1>
 <?php 
  single_cat_title("", false);
   $d = get_query_var('cat'); 
@@ -50,11 +51,18 @@ if( is_category() ) {
 	'taxonomy'           => 'category',
 	'walker'             => null
     );
-    wp_list_categories( $args ); 
+   
 ?>
 <h2><?php $d ?></h2>
 
-<?php tags_filter2();?>
+<div class="categorias-opciones">
+   <?php wp_list_categories( $args ); ?>
+    </div>
+
+<h1>Estados</h1>
+<div class="estados-opciones">
+	<?php tags_filter2();?>
+</div>	
 </aside>
 <script>
 var pagina_seccion = <?php echo json_encode('restaurantes')?>;

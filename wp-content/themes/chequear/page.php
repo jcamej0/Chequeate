@@ -3,7 +3,7 @@
 
 <div  class="pagesecciones">
 	<div class="header">
-		<h2><?php echo  $page_title = $wp_query->post->post_title;?></h2>
+		<h2><?php echo  $page_title = $wp_query->post->post_title;?> / Todos</h2>
     </div>
 <script>
 var pagina_seccion = <?php echo json_encode($page_title)?>;
@@ -44,15 +44,17 @@ if($s){
 	'taxonomy'           => 'category',
 	'walker'             => null
     );
-
+?>
+<div class="categorias-opciones">
+   <?php wp_list_categories( $args ); ?>
+    </div>
+ <?php
 	}else{
 
 		echo "No se poseen categorias";
 	}
 ?>
-<div class="categorias-opciones">
-   <?php wp_list_categories( $args ); ?>
-    </div>
+
 
 <h1>Estados</h1>
 <div class="estados-opciones">
@@ -60,13 +62,107 @@ if($s){
 </div>	
 
 </aside>
-
-
-<div class="tagged-posts">
 	
+
+<nav>
+	<img  id="more_posts" src="<?php bloginfo('template_directory');?>/imagenes/iconos/siguiente.png" height="60" width="60" alt="">
+
+<img id="less" src="<?php bloginfo('template_directory');?>/imagenes/iconos/atras.png" height="60" width="60" alt="">
+</nav>
+
+
+<div id='mycontent'>
+
+ <div class="tagged-posts">
+
+  </ul>
+ </div>
+
+
+
+
+
 </div>
+
+<script>
+
+    var ajaxUrl = "<?php echo admin_url('admin-ajax.php')?>";
+    var page = 1; 
+    var ppp = 12; // Post per page
+    contador = 1;
+
+    $("#more_posts").on("click",function(){ // When btn is pressed.
+    	
+    		$('.tagged-posts').fadeOut();
+
+    		if(contador<totalpaginas)
+    	    contador = contador+=1
+    		
+
+        $("#more_posts").attr("disabled",true); // Disable the button, temp.
+        $.post(ajaxUrl, {
+            action:'more_post_ajax',
+            offset: (page * ppp) + 1,
+            ppp: ppp,
+            totalpaginas: contador,
+            tipopost: tipopost,
+            estadoactual: estadoactual
+        }).success(function(posts){
+            page++;
+            $(".tagged-posts").html(posts); // CHANGE THIS!
+            $("#more_posts").attr("disabled",false);
+             $('.tagged-posts').fadeIn();
+        });
+
+   });
+
+</script>
+
+
+
+<script>
+
+    $("#less").on("click",function(){ // When btn is pressed.
+    	
+    	 $('.tagged-posts').fadeOut();
+
+    		if(contador>1)
+    	    contador = contador-=1
+    		
+
+        $("#more_posts").attr("disabled",true); // Disable the button, temp.
+        $.post(ajaxUrl, {
+            action:'more_post_ajax',
+            offset: (page * ppp) + 1,
+            ppp: ppp,
+            totalpaginas: contador,
+            tipopost: tipopost,
+            estadoactual: estadoactual
+        }).success(function(posts){
+            page++;
+            $(".tagged-posts").html(posts); // CHANGE THIS!
+            $("#more_posts").attr("disabled",false);
+            $('.tagged-posts').fadeIn();
+        });
+
+   });
+
+</script>
+
+
+
+
+
+
+
+
+
 
 </div>
 
 
 <?php get_footer();?>
+
+
+
+

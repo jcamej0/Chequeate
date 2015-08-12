@@ -5,7 +5,7 @@
 	<div class="header">
 		<h1><?php echo $page_title = $wp_query->post->post_title;?></h1>
     </div>
-	SOY UN SINGLEEEE
+	<h1>SECCION EN CONSTRUCCION</h1>
 
 	
   <article id="single">
