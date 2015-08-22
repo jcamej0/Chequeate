@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
     $('.tax-filter').click(function(event) {
 
+        
         contador = 1;
         // Prevent default action - opening tag page
         if (event.preventDefault) {
@@ -13,6 +14,7 @@ jQuery(document).ready(function($) {
         var selecetd_taxonomy = $(this).attr('title');
 
 
+
         // After user click on tag, fade out list of posts
         $('.tagged-posts').fadeOut();
 
@@ -20,12 +22,13 @@ jQuery(document).ready(function($) {
             action: 'filter_posts', // function to execute
             afp_nonce: afp_vars.afp_nonce, // wp_nonce
             taxonomy: selecetd_taxonomy, // selected tag
-            estado: pagina_seccion,
+            pagina_seccion: pagina_seccion,
         };
 
         $.post(afp_vars.afp_ajax_url, data, function(response) {
 
             if (response) {
+
                 // Display posts on page
                 $('.tagged-posts').html(response);
                 // Restore div visibility
@@ -47,15 +50,14 @@ jQuery(document).ready(function($) {
         }
 
 
-        // Get tag slug from title attirbute
+      
         var selecetd_taxonomy = $(this).attr('title');
 
-        // After user click on tag, fade out list of posts
         $('.tagged-posts').fadeOut();
 
         data = {
-            action: 'filter_posts', // function to execute
-            afp_nonce: afp_vars.afp_nonce, // wp_nonce
+            action: 'filter_posts', 
+            afp_nonce: afp_vars.afp_nonce, 
             taxonomy: selecetd_taxonomy,
             estado: pagina_seccion,
             categoria: pagina_cat,
@@ -73,7 +75,7 @@ jQuery(document).ready(function($) {
     });
 
 
-jQuery('#Paginacion a').live('click', function(e){
+    jQuery('#Paginacion a').live('click', function(e) {
 
         e.preventDefault();
 
@@ -81,9 +83,9 @@ jQuery('#Paginacion a').live('click', function(e){
 
         jQuery('#main-col').html('Loading...');
 
-        jQuery('#main-col').load(link+' .tagged-post');
+        jQuery('#main-col').load(link + ' .tagged-post');
 
- 
+
 
     });
 
@@ -93,23 +95,226 @@ jQuery('#Paginacion a').live('click', function(e){
 
 function cargar_publicaciones() {
 
-    // After user click on tag, fade out list of posts
+
     $('.tagged-posts').fadeOut();
 
     data = {
-        action: 'filter_posts', // function to execute
-        afp_nonce: afp_vars.afp_nonce, // wp_nonce
-
+        action: 'filter_posts',
+        afp_nonce: afp_vars.afp_nonce,
         estado: pagina_seccion,
     };
 
     $.post(afp_vars.afp_ajax_url, data, function(response) {
 
         if (response) {
-            // Display posts on page
+
+            
             $('.tagged-posts').html(response);
-            // Restore div visibility
+           
             $('.tagged-posts').fadeIn();
         };
     });
 };
+
+
+
+
+
+
+
+
+function obtenerCiudad(valor) {
+
+
+
+
+
+
+
+
+    var data = {
+
+        estadoSeleccionado: valor,
+
+        action: 'lista_de_ciudades',
+        afp_nonce: afp_vars.afp_nonce
+    }
+
+    $.post(afp_vars.afp_ajax_url, data, function(respuesta) {
+        if (respuesta) {
+            
+            $('#testing').html(respuesta);
+            $('#lista-ciudades').html(respuesta);
+
+
+        }
+    });
+}
+
+
+
+function seleccionarEstado(valor){
+
+
+}
+
+function prueba(valor){
+
+
+        contador = 1;
+        // Prevent default action - opening tag page
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+
+        // Get tag slug from title attirbute
+        window.ciudadescogida  = valor;
+  
+
+        // After user click on tag, fade out list of posts
+        $('.tagged-posts').fadeOut();
+
+        data = {
+            action: 'filter_posts', // function to execute
+            afp_nonce: afp_vars.afp_nonce, // wp_nonce
+            taxonomy: ciudadescogida, // selected tag
+            estado: pagina_seccion,
+            estado2: window.estadoescogido,
+            pagina_seccion: pagina_seccion,
+        };
+
+        $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+            if (response) {
+                // Display posts on page
+                $('.tagged-posts').html(response);
+                // Restore div visibility
+                $('.tagged-posts').fadeIn();
+            };
+        });
+}
+
+
+function cambiarPublicacionesEstado(valor){
+
+window.ciudadescogida = null;
+
+     
+        contador = 1;
+     
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+
+        
+          window.estadoescogido  = valor;
+
+            alert(window.estadoescogido)
+
+    
+        $('.tagged-posts').fadeOut();
+
+        data = {
+            action: 'publicaciones_estado', 
+            afp_nonce: afp_vars.afp_nonce, 
+            taxonomy2: window.estadoescogido, 
+            estado: pagina_seccion,
+             pagina_seccion: pagina_seccion
+ 
+
+        };
+
+        $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+            if (response) {
+                // Display posts on page
+                $('.tagged-posts').html(response);
+                // Restore div visibility
+                $('.tagged-posts').fadeIn();
+            };
+        });
+}
+
+
+
+function listaCategorias(valor){
+
+
+var e = document.getElementById("estadosopciones");
+var seleccionado = e.options[e.selectedIndex].text;
+alert(seleccionado);
+
+
+
+  var data = {
+        action: 'lista_de_categorias',
+        estadoSeleccionado: seleccionado,
+        afp_nonce: afp_vars.afp_nonce,
+        ciudadescogida: window.ciudadescogida,
+        pagina_seccion: pagina_seccion
+    }
+
+    alert(ciudadescogida);
+
+    $.post(afp_vars.afp_ajax_url, data, function(respuesta) {
+        if (respuesta) {
+            
+            alert(respuesta);
+            $('#lista-categorias').html(respuesta);
+
+
+        }
+    });
+
+
+}
+
+
+
+function cambiarporcategoria(valor){
+
+
+        contador = 1;
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+
+          var categoriasescogida = valor;
+
+          var select_city = window.ciudadescogida;
+
+            
+    
+        $('.tagged-posts').fadeOut();
+
+        data = {
+            action: 'publicaciones_por_categoria', 
+            afp_nonce: afp_vars.afp_nonce, 
+            estado_seleccionado_categoria: window.estadoescogido, 
+            categoria_seleccionada: categoriasescogida,
+            ciudad_seleccionado_categoria: select_city,
+            pagina_seccion: pagina_seccion
+        };
+
+
+
+        $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+            if (response) {
+
+               alert(select_city);
+                // Display posts on page
+                $('.tagged-posts').html(response);
+                // Restore div visibility
+                $('.tagged-posts').fadeIn();
+            };
+        });
+
+
+}

@@ -23,6 +23,7 @@ if( is_category() ) {
 <?php 
  single_cat_title("", false);
   $d = get_query_var('cat'); 
+  
 
 
     $args = array(
