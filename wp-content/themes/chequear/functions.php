@@ -84,7 +84,7 @@ add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
 
  ?>
 
- <?php function ajax_filter_get_posts($taxonomy ) {
+ <?php function ajax_filter_get_posts() {
  
   // Verify nonce
   if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
@@ -96,20 +96,34 @@ add_action('wp_enqueue_scripts', 'ajax_filter_posts_scripts', 100);
   $estado = $_POST['estado'];
   $categoria  = $_POST['categoria'];
   $estado2 = $_POST['estado2'];
+  $tipopost = $_POST['pagina_seccion'];
  
   
+if($taxonomy == 'todas' && $estado2 != 'todos'){
 
-if($taxonomy == 'todas'){
-
-  $args = array(
-
-  
+$args = array(
        'tax_query' => array(
       array(
         'taxonomy' => 'estado',
         'terms' => $estado2,
         )
       ),
+        'post_type' => $tipopost,
+        'meta_key' => 'premium',
+        'orderby' => 'meta_value_num',
+        'posts_per_page' => 12,
+        'order'  =>'DESC'
+    );
+   
+
+}
+
+
+else if($taxonomy == 'todas'){
+
+  $args = array(
+
+    'estado' => '',
     'post_type' => $estado,
     'cat' => $categoria,
     'posts_per_page' => 12,
@@ -267,12 +281,15 @@ function more_post_ajax(){
     //$estadoactual = $_POST["estadoactual"];
     $taxonomy2 = $_POST['taxonomy2'];
     $ciudadescogida = $_POST['ciudadescogida'];
-     $secciondelapagina = $_POST['secciondelapagina'];
+    $secciondelapagina = $_POST['secciondelapagina'];
+    $categoria  = $_POST['categoria_seleccionada'];
+    $x = get_cat_ID( $categoria );
+ 
 
 
 
 
-if($estadoactual2 == ''){
+if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
     $args = array(
         'estado' => '',
         'post_type' => $secciondelapagina,
@@ -281,11 +298,13 @@ if($estadoactual2 == ''){
         'meta_key' => 'premium',
         'orderby' => 'meta_value_num',
         'order'  =>'DESC');
-}else if($ciudadescogida !== '' ){
+
+}else if($ciudadescogida != 'todas' && $ciudadescogida != '' ){
 
  $args = array(
        
         'estado' => $ciudadescogida,
+        'post_type' => $secciondelapagina,
         'posts_per_page' => $ppp,
         'paged'  => $totalpaginas,
         'meta_key' => 'premium',
@@ -293,7 +312,7 @@ if($estadoactual2 == ''){
         'order'  =>'DESC'
     );
 
-}else if ($estadoactual2 !== '' && $ciudadescogida == ''){
+}else if ($estadoactual2 != '' && $ciudadescogida == ''){
 
  $args = array(
        'tax_query' => array(
@@ -307,12 +326,80 @@ if($estadoactual2 == ''){
         'paged'  => $totalpaginas,
         'meta_key' => 'premium',
         'orderby' => 'meta_value_num',
-        'order'  =>'DESC'
+        'order'  =>'DESC',
+
     );
    
 
 
+}else if($ciudadescogida == 'todas'){
+
+
+
+  $args = array(
+       
+        'tax_query' => array(
+      array(
+        'taxonomy' => 'estado',
+        'terms' => $estadoactual2,
+        )
+      ),
+        'post_type' => $secciondelapagina,
+        'posts_per_page' => $ppp,
+        'paged'  => $totalpaginas,
+        'meta_key' => 'premium',
+        'orderby' => 'meta_value_num',
+        'order'  =>'DESC'
+    );
+
 }
+
+
+
+
+
+if($ciudadescogida == 'todas' || $ciudadescogida ==''){
+
+$args = array(
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'estado',
+        'terms' => $estadoactual2,
+        
+        )
+      ),
+    'post_type' => $secciondelapagina,
+    'cat' => $x,
+    'posts_per_page' => $ppp,
+    'paged'  => $totalpaginas,
+    'meta_key' => 'premium',
+    'orderby' => 'meta_value_num',
+    'order'  =>'DESC',
+    'post_parent' => 0
+   
+   
+  );
+
+}else if($ciudadescogida !='todas'){
+  $args = array(
+    'estado' => $ciudadescogida,
+    'post_type' => $secciondelapagina,
+    'cat' => $x,
+     'posts_per_page' => $ppp,
+    'paged'  => $totalpaginas,
+    'meta_key' => 'premium',
+    'orderby' => 'meta_value_num',
+    'order'  =>'DESC',
+    'post_parent' => 0
+   
+   
+  );
+}
+
+
+
+
+
 
 
   $wp_query = new WP_Query( $args );
@@ -396,12 +483,12 @@ if($estadoactual2 == ''){
    $estado_Seleccionado = $_POST["estadoSeleccionado"];
    $taxonomy_name = 'estado';
 
-   if(!$estado_Seleccionado == 'todos'){
+   
    $termchildren = get_term_children($estado_Seleccionado,$taxonomy_name);
 
 
 ?>
-<option  value='todas'>TODAS</option>
+<option  value='todas'>Todas</option>
 
 <?php
 foreach ($termchildren as $child ) {
@@ -413,7 +500,7 @@ foreach ($termchildren as $child ) {
 <?php
 
 }
-}else if($estado_Seleccionado == 'todos'){
+if($estado_Seleccionado == 'todos'){
 
 
 $args = array(
@@ -433,7 +520,7 @@ $args = array(
 ); 
 
 ?>
-<option value="todas">Todas</option>}
+}
 option
 <?php
 $citys = get_categories($args);
@@ -645,24 +732,40 @@ function lista_de_categorias(){
    $ciudadescogida = $_POST['ciudadescogida'];
    $secciondelapagina = $_POST['pagina_seccion'];
 
-if($estado_Seleccionado != '' && $ciudadescogida == ''){
+if($estado_Seleccionado != 'todos' && $ciudadescogida == ''){
 $args = array(
         'estado' => $estado_Seleccionado,
         'post_type' => $secciondelapagina,
 );
-}else if ($ciudadescogida !== ''){
+}else if ($ciudadescogida != 'todas'){
   $args = array(
         'estado' => $ciudadescogida,
         'post_type' => $secciondelapagina,
         );
-}else if ($ciudadescogida == 'todas' &&  $estado_Seleccionado == 'todos'){
+}
+
+else if($ciudadescogida == 'todas'){
+
+ $args = array(
+        'estado' => $estado_Seleccionado,
+        'post_type' => $secciondelapagina,
+        );
+
+}
+
+else if($estado_Seleccionado == 'todos' && $ciudadescogida == 'todas'){
 
 
-   $args = array(
+  $args = array(
         'estado' => '',
         'post_type' => $secciondelapagina,
         );
 }
+
+
+
+
+
 ?>
 <option  value='todas'>Todas</option>
 <?php
@@ -710,7 +813,7 @@ foreach ($termlist as $termlist2) {
 $x = get_cat_ID( $categoria );
  
 
-if($ciudad_seleccionado_categoria == ''){
+if($ciudad_seleccionado_categoria == 'todas'){
 
 $args = array(
     'tax_query' => array(

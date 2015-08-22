@@ -163,6 +163,7 @@ cargar_publicaciones();
             totalpaginas: contador,
             tipopost: tipopost,
             estadoactual2: window.estadoescogido,
+            categoria_seleccionada: window.categoriasescogida,
             pagina_seccion: pagina_seccion,
             ciudadescogida: window.ciudadescogida,
             secciondelapagina: pagina_seccion
@@ -198,6 +199,7 @@ cargar_publicaciones();
             totalpaginas: contador,
             tipopost: tipopost,
             estadoactual2: window.estadoescogido,
+            categoria_seleccionada: window.categoriasescogida,
             pagina_seccion: pagina_seccion,
             ciudadescogida: window.ciudadescogida,
             secciondelapagina: pagina_seccion,

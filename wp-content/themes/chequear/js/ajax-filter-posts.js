@@ -126,12 +126,6 @@ function cargar_publicaciones() {
 function obtenerCiudad(valor) {
 
 
-
-
-
-
-
-
     var data = {
 
         estadoSeleccionado: valor,
@@ -160,7 +154,7 @@ function seleccionarEstado(valor){
 
 function prueba(valor){
 
-
+window.categoriasescogida = null;
         contador = 1;
         // Prevent default action - opening tag page
         if (event.preventDefault) {
@@ -179,7 +173,7 @@ function prueba(valor){
         data = {
             action: 'filter_posts', // function to execute
             afp_nonce: afp_vars.afp_nonce, // wp_nonce
-            taxonomy: ciudadescogida, // selected tag
+            taxonomy: window.ciudadescogida, // selected tag
             estado: pagina_seccion,
             estado2: window.estadoescogido,
             pagina_seccion: pagina_seccion,
@@ -200,6 +194,7 @@ function prueba(valor){
 function cambiarPublicacionesEstado(valor){
 
 window.ciudadescogida = null;
+window.categoriasescogida = null;
 
      
         contador = 1;
@@ -285,7 +280,7 @@ function cambiarporcategoria(valor){
             event.returnValue = false;
         }
 
-          var categoriasescogida = valor;
+           window.categoriasescogida = valor;
 
           var select_city = window.ciudadescogida;
 
@@ -297,7 +292,7 @@ function cambiarporcategoria(valor){
             action: 'publicaciones_por_categoria', 
             afp_nonce: afp_vars.afp_nonce, 
             estado_seleccionado_categoria: window.estadoescogido, 
-            categoria_seleccionada: categoriasescogida,
+            categoria_seleccionada: window.categoriasescogida,
             ciudad_seleccionado_categoria: select_city,
             pagina_seccion: pagina_seccion
         };
