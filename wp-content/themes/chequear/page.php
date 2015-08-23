@@ -1,13 +1,13 @@
 <?php get_header(); ?>
-
-
-<div  class="pagesecciones">
-
-
 <nav class="cintillo">
 <h2><?php echo   $page_title = $wp_query->post->post_title;?></h2>
 
 </nav>
+
+<div  class="pagesecciones">
+
+
+
 	<div class="header">
   <div class="seleccionarEstado">
   
@@ -66,7 +66,7 @@ cargar_publicaciones();
 
 <aside class="categorias">
 
-<h1>Categorias</h1>
+
 <?php 
 
  /* $i = get_category_by_slug ('hoteles y posadas'); 
@@ -109,7 +109,6 @@ cargar_publicaciones();
 ?>
 
 
-<h1>Estados</h1>
 <div class="estados-opciones">
 	
 

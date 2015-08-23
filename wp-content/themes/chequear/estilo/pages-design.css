@@ -10,6 +10,8 @@ background: red;
 text-align: center;
 font-size: 26px;
 border-radius:  50px 50px 0px 0px;
+width: 93.7%;
+margin: auto;
 
 }
 
@@ -30,16 +32,15 @@ border-radius:  50px 50px 0px 0px;
 	width: 100%;
 	margin: auto;
 	height: 1500px;
-	border-right:50px solid #FCC39A;
-	border-left: 50px solid #FCC39A;
+	border-right:50px solid rgba(240, 240, 240, 0.9);
+	border-left: 50px solid rgba(240, 240, 240, 0.9);
 	overflow:hidden;
 	margin: black;
 }
 
 .header{
 	text-align: center;
-font-size: 26px;
-
+    font-size: 26px;
 	border-bottom: 1px solid black;
 
 }

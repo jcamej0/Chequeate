@@ -1,27 +1,26 @@
 jQuery(document).ready(function($) {
     $('.tax-filter').click(function(event) {
 
-        
+
         contador = 1;
-        // Prevent default action - opening tag page
+
         if (event.preventDefault) {
             event.preventDefault();
         } else {
             event.returnValue = false;
         }
 
-        // Get tag slug from title attirbute
+
         var selecetd_taxonomy = $(this).attr('title');
 
 
 
-        // After user click on tag, fade out list of posts
         $('.tagged-posts').fadeOut();
 
         data = {
-            action: 'filter_posts', // function to execute
-            afp_nonce: afp_vars.afp_nonce, // wp_nonce
-            taxonomy: selecetd_taxonomy, // selected tag
+            action: 'filter_posts',
+            afp_nonce: afp_vars.afp_nonce,
+            taxonomy: selecetd_taxonomy,
             pagina_seccion: pagina_seccion,
         };
 
@@ -29,9 +28,9 @@ jQuery(document).ready(function($) {
 
             if (response) {
 
-                // Display posts on page
+
                 $('.tagged-posts').html(response);
-                // Restore div visibility
+
                 $('.tagged-posts').fadeIn();
             };
         });
@@ -42,7 +41,7 @@ jQuery(document).ready(function($) {
 
     $('.tax2-filter').click(function(event) {
 
-        // Prevent default action - opening tag page
+
         if (event.preventDefault) {
             event.preventDefault();
         } else {
@@ -50,14 +49,14 @@ jQuery(document).ready(function($) {
         }
 
 
-      
+
         var selecetd_taxonomy = $(this).attr('title');
 
         $('.tagged-posts').fadeOut();
 
         data = {
-            action: 'filter_posts', 
-            afp_nonce: afp_vars.afp_nonce, 
+            action: 'filter_posts',
+            afp_nonce: afp_vars.afp_nonce,
             taxonomy: selecetd_taxonomy,
             estado: pagina_seccion,
             categoria: pagina_cat,
@@ -66,9 +65,9 @@ jQuery(document).ready(function($) {
         $.post(afp_vars.afp_ajax_url, data, function(response) {
 
             if (response) {
-                // Display posts on page
+
                 $('.tagged-posts').html(response);
-                // Restore div visibility
+
                 $('.tagged-posts').fadeIn();
             };
         });
@@ -108,9 +107,9 @@ function cargar_publicaciones() {
 
         if (response) {
 
-            
+
             $('.tagged-posts').html(response);
-           
+
             $('.tagged-posts').fadeIn();
         };
     });
@@ -136,7 +135,7 @@ function obtenerCiudad(valor) {
 
     $.post(afp_vars.afp_ajax_url, data, function(respuesta) {
         if (respuesta) {
-            
+
             $('#testing').html(respuesta);
             $('#lista-ciudades').html(respuesta);
 
@@ -147,105 +146,105 @@ function obtenerCiudad(valor) {
 
 
 
-function seleccionarEstado(valor){
+function seleccionarEstado(valor) {
 
 
 }
 
-function prueba(valor){
+function prueba(valor) {
 
-window.categoriasescogida = null;
-        contador = 1;
-        // Prevent default action - opening tag page
-        if (event.preventDefault) {
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
-        }
+    window.categoriasescogida = null;
+    contador = 1;
 
-        // Get tag slug from title attirbute
-        window.ciudadescogida  = valor;
-  
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
 
-        // After user click on tag, fade out list of posts
-        $('.tagged-posts').fadeOut();
 
-        data = {
-            action: 'filter_posts', // function to execute
-            afp_nonce: afp_vars.afp_nonce, // wp_nonce
-            taxonomy: window.ciudadescogida, // selected tag
-            estado: pagina_seccion,
-            estado2: window.estadoescogido,
-            pagina_seccion: pagina_seccion,
+    window.ciudadescogida = valor;
+
+
+
+    $('.tagged-posts').fadeOut();
+
+    data = {
+        action: 'filter_posts',
+        afp_nonce: afp_vars.afp_nonce,
+        taxonomy: window.ciudadescogida,
+        estado: pagina_seccion,
+        estado2: window.estadoescogido,
+        pagina_seccion: pagina_seccion,
+    };
+
+    $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+        if (response) {
+
+            $('.tagged-posts').html(response);
+
+            $('.tagged-posts').fadeIn();
         };
-
-        $.post(afp_vars.afp_ajax_url, data, function(response) {
-
-            if (response) {
-                // Display posts on page
-                $('.tagged-posts').html(response);
-                // Restore div visibility
-                $('.tagged-posts').fadeIn();
-            };
-        });
+    });
 }
 
 
-function cambiarPublicacionesEstado(valor){
+function cambiarPublicacionesEstado(valor) {
 
-window.ciudadescogida = null;
-window.categoriasescogida = null;
+    window.ciudadescogida = null;
+    window.categoriasescogida = null;
 
-     
-        contador = 1;
-     
-        if (event.preventDefault) {
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
-        }
 
-        
-          window.estadoescogido  = valor;
+    contador = 1;
 
-            alert(window.estadoescogido)
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
 
-    
-        $('.tagged-posts').fadeOut();
 
-        data = {
-            action: 'publicaciones_estado', 
-            afp_nonce: afp_vars.afp_nonce, 
-            taxonomy2: window.estadoescogido, 
-            estado: pagina_seccion,
-             pagina_seccion: pagina_seccion
- 
+    window.estadoescogido = valor;
 
+    alert(window.estadoescogido)
+
+
+    $('.tagged-posts').fadeOut();
+
+    data = {
+        action: 'publicaciones_estado',
+        afp_nonce: afp_vars.afp_nonce,
+        taxonomy2: window.estadoescogido,
+        estado: pagina_seccion,
+        pagina_seccion: pagina_seccion
+
+
+    };
+
+    $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+        if (response) {
+
+            $('.tagged-posts').html(response);
+
+            $('.tagged-posts').fadeIn();
         };
-
-        $.post(afp_vars.afp_ajax_url, data, function(response) {
-
-            if (response) {
-                // Display posts on page
-                $('.tagged-posts').html(response);
-                // Restore div visibility
-                $('.tagged-posts').fadeIn();
-            };
-        });
+    });
 }
 
 
 
-function listaCategorias(valor){
+function listaCategorias(valor) {
 
 
-var e = document.getElementById("estadosopciones");
-var seleccionado = e.options[e.selectedIndex].text;
-alert(seleccionado);
+    var e = document.getElementById("estadosopciones");
+    var seleccionado = e.options[e.selectedIndex].text;
+    alert(seleccionado);
 
 
 
-  var data = {
+    var data = {
         action: 'lista_de_categorias',
         estadoSeleccionado: seleccionado,
         afp_nonce: afp_vars.afp_nonce,
@@ -257,7 +256,7 @@ alert(seleccionado);
 
     $.post(afp_vars.afp_ajax_url, data, function(respuesta) {
         if (respuesta) {
-            
+
             alert(respuesta);
             $('#lista-categorias').html(respuesta);
 
@@ -270,46 +269,46 @@ alert(seleccionado);
 
 
 
-function cambiarporcategoria(valor){
+function cambiarporcategoria(valor) {
 
 
-        contador = 1;
-        if (event.preventDefault) {
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
-        }
+    contador = 1;
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
 
-           window.categoriasescogida = valor;
+    window.categoriasescogida = valor;
 
-          var select_city = window.ciudadescogida;
+    var select_city = window.ciudadescogida;
 
-            
-    
-        $('.tagged-posts').fadeOut();
 
-        data = {
-            action: 'publicaciones_por_categoria', 
-            afp_nonce: afp_vars.afp_nonce, 
-            estado_seleccionado_categoria: window.estadoescogido, 
-            categoria_seleccionada: window.categoriasescogida,
-            ciudad_seleccionado_categoria: select_city,
-            pagina_seccion: pagina_seccion
+
+    $('.tagged-posts').fadeOut();
+
+    data = {
+        action: 'publicaciones_por_categoria',
+        afp_nonce: afp_vars.afp_nonce,
+        estado_seleccionado_categoria: window.estadoescogido,
+        categoria_seleccionada: window.categoriasescogida,
+        ciudad_seleccionado_categoria: select_city,
+        pagina_seccion: pagina_seccion
+    };
+
+
+
+    $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+        if (response) {
+
+            alert(select_city);
+
+            $('.tagged-posts').html(response);
+
+            $('.tagged-posts').fadeIn();
         };
-
-
-
-        $.post(afp_vars.afp_ajax_url, data, function(response) {
-
-            if (response) {
-
-               alert(select_city);
-                // Display posts on page
-                $('.tagged-posts').html(response);
-                // Restore div visibility
-                $('.tagged-posts').fadeIn();
-            };
-        });
+    });
 
 
 }

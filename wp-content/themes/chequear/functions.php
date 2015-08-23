@@ -1,8 +1,8 @@
 <?php
 add_theme_support( 'post-thumbnails' );
 if ( function_exists( 'add_image_size' ) ) { 
-   add_image_size( 'post-thumbnail', 380, 150, true );// please give another name if its not major requirement of this
-   add_image_size( 'featured-thumbnail', 360, 300, true );// please give another name if its not major requirement of this
+   add_image_size( 'post-thumbnail', 380, 150, true );
+   add_image_size( 'featured-thumbnail', 360, 300, true );
 }
 	
 ?>
@@ -736,11 +736,13 @@ if($estado_Seleccionado != 'todos' && $ciudadescogida == ''){
 $args = array(
         'estado' => $estado_Seleccionado,
         'post_type' => $secciondelapagina,
+         'posts_per_page' => -1
 );
 }else if ($ciudadescogida != 'todas'){
   $args = array(
         'estado' => $ciudadescogida,
         'post_type' => $secciondelapagina,
+          'posts_per_page' => -1
         );
 }
 
@@ -749,6 +751,7 @@ else if($ciudadescogida == 'todas'){
  $args = array(
         'estado' => $estado_Seleccionado,
         'post_type' => $secciondelapagina,
+          'posts_per_page' => -1
         );
 
 }
@@ -759,6 +762,7 @@ else if($estado_Seleccionado == 'todos' && $ciudadescogida == 'todas'){
   $args = array(
         'estado' => '',
         'post_type' => $secciondelapagina,
+        'posts_per_page' => -1
         );
 }
 
