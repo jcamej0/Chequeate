@@ -188,7 +188,7 @@ var estadoactual = <?php echo json_encode($taxonomy); ?>
   </div>
      <div class="informacion">
       <div class="nombre">
-        <a href="<?php the_permalink(); ?>"><h1><?php the_title();?></h1></a>
+       <h1><?php the_title();?></h1>
       
        </div>
       
@@ -211,19 +211,20 @@ var estadoactual = <?php echo json_encode($taxonomy); ?>
 
       <div class="gps">
       Coordenadas de GPS:
-      <br>
-       <?php 
+      <br> 
+      <?php the_field('coordenadas') ?>
+      </div>
+
+     
+   <?php 
        $premium = get_field('premium');
 
        if($premium){
-          ?>  <button type="submit">VISITAR</button> <?php ;
+          ?>  <div class="boton"> <a href="<?php the_permalink(); ?>">  Chequear </a>   </div><?php ;
 
        }
          ?>
-       
-      <?php the_field('coordenadas') ?>
-        
-      </div>
+     
 
 
     </div>
@@ -289,12 +290,48 @@ function more_post_ajax(){
 
 
 
-if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
+if($estadoactual2 == 'todos' && $ciudadescogida !=''){
+
+  $args = array(
+        'estado' => $ciudadescogida,
+        'post_type' => $secciondelapagina,
+        'posts_per_page' => $ppp,
+        'paged'  => $totalpaginas,
+          'cat' => $x,
+        'meta_key' => 'premium',
+        'orderby' => 'meta_value_num',
+        'order'  =>'DESC');
+
+}
+else if($estadoactual2 == 'todos' && $ciudadescogida == 'todas'){
+
+ $args = array(
+       'tax_query' => array(
+      array(
+        'taxonomy' => 'estado',
+        'terms' => $estadoactual2,
+        )
+      ),
+        'post_type' => $tipopost,
+        'posts_per_page' => $ppp,
+        'paged'  => $totalpaginas,
+        'cat' => $x,
+        'meta_key' => 'premium',
+        'orderby' => 'meta_value_num',
+        'order'  =>'DESC',
+
+    );
+   
+}
+
+
+else if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
     $args = array(
         'estado' => '',
         'post_type' => $secciondelapagina,
         'posts_per_page' => $ppp,
         'paged'  => $totalpaginas,
+          'cat' => $x,
         'meta_key' => 'premium',
         'orderby' => 'meta_value_num',
         'order'  =>'DESC');
@@ -308,11 +345,12 @@ if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
         'posts_per_page' => $ppp,
         'paged'  => $totalpaginas,
         'meta_key' => 'premium',
+        'cat' => $x,
         'orderby' => 'meta_value_num',
         'order'  =>'DESC'
     );
 
-}else if ($estadoactual2 != '' && $ciudadescogida == ''){
+}else if (($estadoactual2 != '' || $estadoactual2 != 'todos') && $ciudadescogida == ''){
 
  $args = array(
        'tax_query' => array(
@@ -324,6 +362,7 @@ if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
         'post_type' => $tipopost,
         'posts_per_page' => $ppp,
         'paged'  => $totalpaginas,
+        'cat' => $x,
         'meta_key' => 'premium',
         'orderby' => 'meta_value_num',
         'order'  =>'DESC',
@@ -332,33 +371,7 @@ if($estadoactual2 == '' || $estadoactual2 == 'todos' ){
    
 
 
-}else if($ciudadescogida == 'todas'){
-
-
-
-  $args = array(
-       
-        'tax_query' => array(
-      array(
-        'taxonomy' => 'estado',
-        'terms' => $estadoactual2,
-        )
-      ),
-        'post_type' => $secciondelapagina,
-        'posts_per_page' => $ppp,
-        'paged'  => $totalpaginas,
-        'meta_key' => 'premium',
-        'orderby' => 'meta_value_num',
-        'order'  =>'DESC'
-    );
-
-}
-
-
-
-
-
-if($ciudadescogida == 'todas' || $ciudadescogida ==''){
+}else if($ciudadescogida == 'todas' || $ciudadescogida == ''){
 
 $args = array(
     'tax_query' => array(
@@ -395,6 +408,13 @@ $args = array(
    
   );
 }
+
+
+
+
+
+
+
 
 
 
@@ -439,19 +459,21 @@ $args = array(
       <div class="gps">
       Coordenadas de GPS:
       <br>
-       <?php 
-       $premium = get_field('premium');
-
-       if($premium){
-          ?>  <button type="submit">VISITAR</button> <?php ;
-
-       }
-         ?>
-       
       <?php the_field('coordenadas') ?>
         
       </div>
 
+
+  
+   <?php 
+       $premium = get_field('premium');
+
+       if($premium){
+          ?>  <div class="boton"> <a href="<?php the_permalink(); ?>">  Chequear </a>   </div><?php ;
+
+       }
+         ?>
+     
 
     </div>
 </div>
@@ -481,9 +503,7 @@ $args = array(
 
 
    $estado_Seleccionado = $_POST["estadoSeleccionado"];
-   $taxonomy_name = 'estado';
-
-   
+   $taxonomy_name = 'estado';   
    $termchildren = get_term_children($estado_Seleccionado,$taxonomy_name);
 
 
@@ -670,18 +690,21 @@ var estadoactual = <?php echo json_encode($taxonomy); ?>
       <div class="gps">
       Coordenadas de GPS:
       <br>
-       <?php 
-       $premium = get_field('premium');
-
-       if($premium){
-          ?>  <button type="submit">VISITAR</button> <?php ;
-
-       }
-         ?>
        
       <?php the_field('coordenadas') ?>
         
       </div>
+
+
+   <?php 
+       $premium = get_field('premium');
+
+       if($premium){
+          ?>  <div class="boton"> <a href="<?php the_permalink(); ?>">  Chequear </a>   </div><?php ;
+
+       }
+         ?>
+     
 
 
     </div>
@@ -817,7 +840,7 @@ foreach ($termlist as $termlist2) {
 $x = get_cat_ID( $categoria );
  
 
-if($ciudad_seleccionado_categoria == 'todas'){
+if($ciudad_seleccionado_categoria == 'todas' || $ciudad_seleccionado_categoria == ''){
 
 $args = array(
     'tax_query' => array(
@@ -903,18 +926,21 @@ var estadoactual = <?php echo json_encode($taxonomy); ?>
       <div class="gps">
       Coordenadas de GPS:
       <br>
-       <?php 
-       $premium = get_field('premium');
-
-       if($premium){
-          ?>  <button type="submit">VISITAR</button> <?php ;
-
-       }
-         ?>
-       
+  
       <?php the_field('coordenadas') ?>
         
       </div>
+
+
+   <?php 
+       $premium = get_field('premium');
+
+       if($premium){
+          ?>  <div class="boton"> <a href="<?php the_permalink(); ?>">  Chequear </a>   </div><?php ;
+
+       }
+         ?>
+     
 
 
     </div>
@@ -945,6 +971,153 @@ var estadoactual = <?php echo json_encode($taxonomy); ?>
  
 add_action('wp_ajax_publicaciones_por_categoria', 'ajax_filter_publicaciones_por_categoria');
 add_action('wp_ajax_nopriv_publicaciones_por_categoria', 'ajax_filter_publicaciones_por_categoria');
+
+
+
+
+
+
+
+
+ 
+
+ ?>
+
+ 
+
+ <?php function post_index() {
+ 
+  // Verify nonce
+  if( !isset( $_POST['afp_nonce'] ) || !wp_verify_nonce( $_POST['afp_nonce'], 'afp_nonce' ) )
+    die('Permission denied');
+ global $wp_query;
+
+  $taxonomy = $_POST['taxonomy'];
+  $taxonomy2 = $_POST['taxonomy2'];
+  $estado = $_POST['estado'];
+  $categoria  = $_POST['categoria'];
+  $estado2 = $_POST['estado2'];
+  $tipopost = $_POST['pagina_seccion'];
+ 
+  
+
+  $args = array(
+
+   
+   
+    'post_type' => array('restaurantes', 'Locales Nocturnos','Hoteles y Posadas','Centros Comerciales','Farmacias'), 
+    'posts_per_page' => 12,
+    'meta_key' => 'premium',
+    'meta_value' => true,
+    'orderby' => 'meta_value_num',
+    'order'  =>'DESC',
+    'post_parent' => 0
+   
+   
+  );
+
+
+
+
+
+ 
+
+
+
+
+
+  $wp_query = new WP_Query( $args );
+?>
+
+
+<?php
+
+  if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post();   ?>
+<script>
+var totalpaginas = <?php echo json_encode($wp_query->max_num_pages)?>;
+var tipopost = <?php echo json_encode($estado) ?>;
+var estadoactual = <?php echo json_encode($taxonomy); ?>
+
+
+</script>
+
+<div id="destacados">
+
+    <div class="publicacionesindex">
+
+  <div class="imagen">
+  <?php the_post_thumbnail('thumbnail'); ?>
+  </div>
+     <div class="informacion">
+      <div class="nombre">
+       <h1><?php the_title();?></h1>
+      
+       </div>
+      
+      <div class="rif">
+
+      Rif: <?php the_field('rif') ?>
+        
+      </div>
+
+      <div class="direccion">
+      Direccion: <?php the_field('direccion') ?>
+      </div>
+
+      <div class="telefono">
+
+      Telefonos: <?php the_field('telefono') ?>
+        
+      </div>
+
+
+      <div class="gps">
+      Coordenadas de GPS:
+      <br> 
+      <?php the_field('coordenadas') ?>
+      </div>
+
+     
+   <?php 
+       $premium = get_field('premium');
+
+       if($premium){
+          ?>  <div class="boton"> <a href="<?php the_permalink(); ?>">  Chequear </a>   </div><?php ;
+
+       }
+         ?>
+     
+
+
+    </div>
+</div>
+</div>
+</div>
+ 
+  <?php endwhile;  ?>
+
+
+
+
+
+
+
+<?php else: ?>
+  <h2>No hay publicaciones</h2>
+<?php endif; ?>
+
+  
+
+
+ 
+  <?php 
+ 
+  die();
+}
+ 
+add_action('wp_ajax_post_index', 'post_index');
+add_action('wp_ajax_nopriv_post_index', 'post_index');
+
 
 
 

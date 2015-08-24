@@ -27,13 +27,18 @@
 
 
 
-      <!--<div class="menu2">
-      <p>Comparte en tus red social</p>
-            <img src="<?php bloginfo('template_url')?>/imagenes/facebook.png" height="40" width="40" alt="">
-            <img src="<?php bloginfo('template_url')?>/imagenes/twitter.png" height="40" width="40" alt="">
-            <img src="<?php bloginfo('template_url')?>/imagenes/youtube.png" height="40" width="40" alt="">
+
+            <div class="menusuperior">
+
+            <a href="" title="">Inicio</a>
+            <a href="" title="">Contacto</a>
+            <a href="" title="">Suscribete</a>
+            <a href="" title="">Ingresa</a>
+              
             </div>
-      <?php get_search_form(); ?>      
+
+
+         
       <!--<ul id="menu">
       <?php wp_nav_menu (array ('items_wrap' => '%3$s', 'container_class' => 'my_extra_menu_class')); ?>
       </ul> -->

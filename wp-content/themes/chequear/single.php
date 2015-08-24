@@ -1,35 +1,46 @@
 <?php get_header(); ?>
 
 
-<div  class="pagesecciones">
 	<div class="header">
-		<h1><?php echo $page_title = $wp_query->post->post_title;?></h1>
+		<h1>Pagina Premium</h1>
     </div>
-	<h1>SECCION EN CONSTRUCCION</h1>
+<div  class="contenedor_single">
 
+<div class="head_single">
+	
+
+	<div class="nombre_single">
+	<h1><?php the_title();?></h1>
+    </div>
+    <span class="rif_single">Rif : <?php echo the_field('rif');?></span>
+</div>
 	
   <article id="single">
-          <?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
- <div class="publicaciones">
-<div class="nombre">
-	<h1><?php the_title();?></h1>
-	<a href="<?php the_permalink(); ?>"><img src="<?php bloginfo('template_url')?>/imagenes/lupa.png" width="50" height="50"></img></a>
-    </div>
-	<div class="imagen">
+ 
+    
+	<div class="imagen_single">
 	<?php the_post_thumbnail('thumbnail'); ?>
 	</div>
 	
-	<div class="resumen">
-	<?php the_excerpt() ?>
-	</div>
-	<div class="telefono">
-     <img src="<?php bloginfo('template_url')?>/imagenes/iconos/telefono.png" height="25" width="25" alt="">
-		<span><?php echo the_field('telefono');?></span>
-	</div>
+	
+	<br>
+	
+
+
+	<span class="direccion_single">Direccion: <?php echo the_field('direccion');?></span>
+	<br>
+	<span class="resumen_single"><?php echo the_field('resumen');?></span>
+	<br>
+	<span class="telefono_single">Telefonos: <?php echo the_field('telefono') ?></span>
+	<br>
+	<span class="coordenadas_single">Coordenadas GPS: <?php echo the_field('coordenadas');?></span>
+		
 	
 </div>
 
-<?php endwhile; ?><?php endif; ?>
+	<?php comments_template(); ?>
+
+
 </div>
 	
 <?php get_footer();?>

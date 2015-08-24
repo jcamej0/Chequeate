@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+
+<div class="contenedorGlobal">
 <nav class="cintillo">
 <h2><?php echo   $page_title = $wp_query->post->post_title;?></h2>
 
@@ -9,6 +11,7 @@
 
 
 	<div class="header">
+
   <div class="seleccionarEstado">
   
 
@@ -53,7 +56,7 @@
 </div>
 
 		
-    </div>
+    
 
 <script>
 var pagina_seccion = <?php echo json_encode($page_title)?>;
@@ -61,7 +64,7 @@ cargar_publicaciones();
 </script>
 
 
-
+</div>
 
 
 <aside class="categorias">
@@ -241,6 +244,7 @@ cargar_publicaciones();
 
 
 
+</div>
 </div>
 
 

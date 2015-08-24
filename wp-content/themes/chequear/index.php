@@ -26,7 +26,9 @@ foreach($pages as $page){
             <?php echo get_the_post_thumbnail($page->ID); ?>
              <h1> <?php echo $page->post_title ?> </h1>
 
-            <a href="<?php echo get_page_link($page->ID); ?>">VISITAR             </a>
+            <div >
+                <a class="boton_index" href="<?php echo get_page_link($page->ID); ?>">VISITAR</a>
+            </div>
 
 
         </div>
@@ -37,14 +39,19 @@ foreach($pages as $page){
     </div>
 
 
-    <div class="destacados">
+
         <h1>Destacados</h1>
 
-        <?php if (function_exists('wp_corenavi')) wp_corenavi(); ?>
-
+<div class="tagged-posts">
+<script>
+cargar_publicaciones_index();
+</script>
+</div>
     </div>
-    <section class="masvisitados">
-    </section>
+ 
+
+
+
     </div>
 
    

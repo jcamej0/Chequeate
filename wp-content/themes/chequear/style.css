@@ -16,6 +16,39 @@ h2 {
     margin: 0px;
 }
 
+
+
+
+.menu2{
+
+    position: relative;
+    left: 500px;
+    bottom: 10px;
+}
+
+.menusuperior{
+
+   
+  float: right;
+  margin-right: 5px;
+
+}
+
+.menusuperior a{
+    font-color: white;
+    margin-right: 5px;
+}
+
+
+.boton_index{
+
+    border-radius: 8px;
+    background: rgba(180,25,4,.8);
+    padding: 5px 50px 5px 50px;
+    cursor: pointer;
+    margin: auto;
+}
+
 * {
     margin: 0px;
     box-sizing: border-box;
@@ -75,7 +108,7 @@ nav li {
     margin: 0px auto auto auto;
     overflow: auto;
     background: white;
-    padding: auto;
+    padding: 25px;
     width: 100%;
     padding-left: 100px;
     box-shadow: 0px 2px 0px 1px rgba(20,20,20,.5);
@@ -84,15 +117,12 @@ nav li {
 
 .seccion {
     display: inline-block;
-    width: 24%;
     height: 300px;
-    padding: 10px 0px 0px 25px;
-    border-right: 1px solid rgba(155, 155, 155, .3);
-    border-left: 1px solid rgba(155, 155, 155, .3);
-    border-bottom: 1px solid rgba(155, 155, 155, .3);
-    border-top: 1px solid rgba(155, 155, 155, .3);
-    overflow: auto;
-    box-shadow: 1px 1px 25px rgba(50, 50, 50, .1);
+    padding: 10px 10px 10px 10px;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 2px;
+
     
 }
 
@@ -120,9 +150,55 @@ nav li {
     height: 158px;
 }
 
-.destacados {
-padding-top: 15px;
-height: 600px;
+#destacados {
+    margin-top: 5%;
+    width: 15%;
+    height: 400px;
+    display: inline-block;
+    background-color: rgba(220, 220, 220, 0.5);
+    margin-right: 2%;
+    margin-left: 2%;
+    -webkit-transition: margin 0.5s ease-out;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 1);
+    -webkit-transition: box-shadow .5s, border 1s,padding 1s;
+    transition: box-shadow .5s, border 1s, padding 1s;
+     border-radius: 15px;
+
+
+}
+
+
+
+#destacados:hover{
+
+
+}
+
+
+
+
+{
+
+}
+
+
+.publicacionesindex h1 {
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.publicacionesindex {
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+
+  
+}
+
+
 
 }
 

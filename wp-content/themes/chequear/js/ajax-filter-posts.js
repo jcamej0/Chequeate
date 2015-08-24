@@ -100,7 +100,31 @@ function cargar_publicaciones() {
     data = {
         action: 'filter_posts',
         afp_nonce: afp_vars.afp_nonce,
-        estado: pagina_seccion,
+        estado: window.pagina_seccion,
+    };
+
+    $.post(afp_vars.afp_ajax_url, data, function(response) {
+
+        if (response) {
+
+
+            $('.tagged-posts').html(response);
+
+            $('.tagged-posts').fadeIn();
+        };
+    });
+};
+
+
+function cargar_publicaciones_index() {
+
+
+    $('.tagged-posts').fadeOut();
+
+    data = {
+        action: 'post_index',
+        afp_nonce: afp_vars.afp_nonce,
+        estado: window.pagina_seccion,
     };
 
     $.post(afp_vars.afp_ajax_url, data, function(response) {
