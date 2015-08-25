@@ -29,8 +29,8 @@
     font-size: 32px;
     border-bottom: 1px solid black;
     padding-bottom: 15px;
-    background: rgba(148, 150, 148, .9);
-    box-shadow: 1px 5px 50px 16px rgba(240, 240, 240, .5) inset;
+    background: #FF7043;
+    box-shadow: 2px 5px 75px 25px #BF360C inset;
     border: 0px 1px 1px 1px solid black;
     padding-top: 5px;
 }
@@ -149,7 +149,7 @@ aside {
     font-size: 14px;
     color: black;
     font-weight: bold;
-  
+
 }
 
 .nombre {
@@ -247,13 +247,12 @@ aside {
 
 
 .contenedor_single{
-
     background: white;
-    width: 88%;
+    width: 90%;
     margin: auto;
-    height: 1200px;
+    height: 1300px;
     overflow: hidden;
-    
+
     box-shadow: 5px 5px 20px 5px rgba(0,0,0,.5);
     padding: 25px 40px 0px 40px;
 
@@ -270,6 +269,9 @@ aside {
 
 	font-size: 32px;
 	font-style: italic;
+  color: #f2f2f2;
+  text-shadow: 2px 4px 3px #BF360C;
+
 }
 
 
@@ -277,14 +279,16 @@ aside {
 
 	font-size: 22px;
 	font-weight: bold;
+  text-decoration: underline;
 }
 
 
 
 .direccion_single,.resumen_single,.telefono_single,.coordenadas_single{
-
-	color: rgba(25,25,25,1);
+  margin-top: auto;
+  color: rgba(25,25,25,1);
 	font-size: 18px;
+  font-variant: small-caps;
 
 
 }
@@ -295,4 +299,41 @@ aside {
 	border-radius: 2px;
 	width: 88%;
 	margin: auto;
+}
+
+#single > div.imagen_single > img{
+  width: 100%;
+  height: 500px;
+
+}
+
+#gallery-2 > dl > dt > a > img{
+  height: 150px;
+  width: 150px;
+}
+
+#single > div.galeria_single{
+  margin-top:5%;
+}
+
+#wpcomm > div.wc-form-wrapper{
+
+  background-color: whitesmoke;
+}
+body > div.header > h1{
+text-shadow: 0 1px 0 #FBE9E7,
+0 2px 0 #FFCCBC,
+0 3px 0 #FFAB91,
+0 4px 0 #FF8A65,
+0 5px 0 #FF7043,
+0 6px 1px #FF5722,
+0 0 5px #F4511E,
+0 1px 3px #E64A19,
+0 3px 5px #D84315,
+0 5px 10px #BF360C,
+0 10px 10px rgba(0,0,0,.2),
+0 20px 20px rgba(0,0,0,.15);
+color: white;
+font-size: 90px;
+font-family: Impact;
 }

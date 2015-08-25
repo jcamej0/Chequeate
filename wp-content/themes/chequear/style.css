@@ -28,7 +28,7 @@ h2 {
 
 .menusuperior{
 
-   
+
   float: right;
   margin-right: 5px;
 
@@ -50,6 +50,7 @@ h2 {
 }
 
 * {
+
     margin: 0px;
     box-sizing: border-box;
     font-family: "Droid Sans";
@@ -123,7 +124,7 @@ nav li {
     margin: 5px;
     border-radius: 2px;
 
-    
+
 }
 
 .seccion h1 {
@@ -195,7 +196,7 @@ nav li {
     color: black;
     font-weight: bold;
 
-  
+
 }
 
 

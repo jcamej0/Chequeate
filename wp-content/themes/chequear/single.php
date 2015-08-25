@@ -7,24 +7,24 @@
 <div  class="contenedor_single">
 
 <div class="head_single">
-	
+
 
 	<div class="nombre_single">
 	<h1><?php the_title();?></h1>
     </div>
     <span class="rif_single">Rif : <?php echo the_field('rif');?></span>
 </div>
-	
+
   <article id="single">
- 
-    
+
+
 	<div class="imagen_single">
 	<?php the_post_thumbnail('thumbnail'); ?>
 	</div>
-	
-	
+
+
 	<br>
-	
+
 
 
 	<span class="direccion_single">Direccion: <?php echo the_field('direccion');?></span>
@@ -34,13 +34,18 @@
 	<span class="telefono_single">Telefonos: <?php echo the_field('telefono') ?></span>
 	<br>
 	<span class="coordenadas_single">Coordenadas GPS: <?php echo the_field('coordenadas');?></span>
-		
-	
+<div class="galeria_single">
+	<?php   if ( get_post_gallery() ) :
+        echo get_post_gallery();
+    endif; ?>
+</div>
+<hr>
+
 </div>
 
 	<?php comments_template(); ?>
 
 
 </div>
-	
+
 <?php get_footer();?>
